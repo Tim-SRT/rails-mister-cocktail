@@ -1,8 +1,14 @@
-<h1> <%= @cocktail.name %></h1>
-
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.oenopro.com/wp-content/uploads/2020/04/Lise-Cocktails.jpg);">
+  <div class="container">
+    <h1><%= @cocktail.name %></h1>
+    <%= link_to "Ajouter une dose", new_cocktail_dose_path(@cocktail), class: "btn btn-success btn-lg" %>
+  </div>
+</div>
 <ul>
 <%@cocktail.doses.each do |dose| %>
-<li> <%= "#{dose.description} - #{dose.ingredient.name}" %>
+<li class="ingredient"> <%= "Ingrédient : #{dose.ingredient.name} - Quantité #{dose.description}" %>
 </li>
 <% end %>
 </ul>
+
+<%= link_to "Back to all cocktails", root_path %>
